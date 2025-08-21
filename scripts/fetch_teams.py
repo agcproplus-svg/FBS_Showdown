@@ -1,0 +1,1 @@
+# Placeholder fetch_teams.py script
