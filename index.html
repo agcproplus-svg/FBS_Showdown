@@ -2,27 +2,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>FBS Showdown Prototype</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/dice.js"></script>
-    <script src="js/engine.js"></script>
-    <script src="js/ui.js"></script>
+  <meta charset="utf-8">
+  <title>FBS Showdown</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/dice.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/ui.js"></script>
 </head>
 <body>
-    <h1>FBS Showdown Prototype</h1>
-    <div>
-        <label>Team: </label>
+  <header>
+    <img class="logo" src="img/logos/_placeholder.png" alt="logo">
+    <h1>FBS Showdown</h1>
+  </header>
+  <main>
+    <section class="panel">
+      <h2>Teams</h2>
+      <div id="teamList"></div>
+    </section>
+    <section class="panel">
+      <h2>Play</h2>
+      <div class="actions">
+        <label>Team:</label>
         <select id="teamSelect" onchange="selectTeam()"></select>
-    </div>
-    <div>
-        <label>Player: </label>
+        <label>Player:</label>
         <select id="playerSelect" onchange="selectPlayer()"></select>
-    </div>
-    <div>
-        <button onclick="runPlay('Run')">Run Play</button>
-        <button onclick="runPlay('Pass')">Pass Play</button>
-    </div>
-    <div id="log"></div>
+      </div>
+      <div class="actions" style="margin-top:8px;">
+        <button class="img-btn" onclick="runPlay('Run')">
+          <img src="img/run_button.png" alt="Run">
+        </button>
+        <button class="img-btn" onclick="runPlay('Pass')">
+          <img src="img/pass_button.png" alt="Pass">
+        </button>
+      </div>
+      <div id="log" style="margin-top:12px;"></div>
+    </section>
+  </main>
+  <footer>© FBS Showdown</footer>
 </body>
 </html>

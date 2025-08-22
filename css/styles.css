@@ -1,6 +1,24 @@
 
-body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
-h1 { color: #333; }
-button { padding: 10px 20px; margin: 5px; font-size: 16px; }
-select { padding: 5px; font-size: 16px; }
-#log { margin-top: 20px; padding: 10px; background: white; border: 1px solid #ccc; height: 200px; overflow-y: auto; }
+:root {
+  --bg: #0b1220;
+  --panel: #16213a;
+  --accent: #19a974;
+  --text: #eef2f7;
+}
+* { box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; background: var(--bg); color: var(--text); margin: 0; }
+header { padding: 24px; display: flex; align-items: center; gap: 12px; background: linear-gradient(90deg,#101a31,#0b1220); box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+header img.logo { height: 40px; }
+header h1 { font-size: 20px; margin: 0; font-weight: 700; letter-spacing: .5px; }
+main { padding: 20px; display: grid; gap: 16px; grid-template-columns: 320px 1fr; }
+.panel { background: var(--panel); border-radius: 14px; padding: 16px; box-shadow: 0 6px 24px rgba(0,0,0,.35); }
+.panel h2 { margin: 0 0 12px; font-size: 16px; color: #bcd2ff; }
+select, button { font-size: 14px; border-radius: 10px; border: 1px solid #263455; background: #0f1a32; color: var(--text); padding: 10px 12px; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+button.img-btn { border: none; background: none; padding: 0; cursor: pointer; }
+button.img-btn img { height: 60px; display: block; }
+.team-card { display: grid; grid-template-columns: 56px 1fr; gap: 10px; align-items: center; padding: 6px 8px; border-radius: 10px; background:#0f1a32; margin: 6px 0; }
+.team-card img { width: 56px; height: 56px; object-fit: contain; background:#0a1225; border-radius:8px; }
+#log { height: 260px; overflow:auto; background: #0f1a32; border-radius: 10px; padding: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.log-line { padding: 6px 0; border-bottom: 1px dashed #233257; }
+footer { padding: 16px; text-align: center; color:#96a6c8; }

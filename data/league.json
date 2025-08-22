@@ -1,7 +1,9 @@
 {
   "teams": [
     {
+      "id": "ALA",
       "name": "Alabama Crimson Tide",
+      "logo": "img/logos/_placeholder.png",
       "players": {
         "RB John Doe": {
           "run": {
@@ -50,7 +52,9 @@
       }
     },
     {
+      "id": "UGA",
       "name": "Georgia Bulldogs",
+      "logo": "img/logos/_placeholder.png",
       "players": {
         "RB Mike Johnson": {
           "run": {

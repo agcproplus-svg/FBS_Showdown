@@ -1,11 +1,10 @@
 
-function resolvePlay(team, player, playType) {
-    let roll = roll2d6();
-    let outcome = "";
-    if(playType === "Run") {
-        outcome = team.players[player].run[roll] || "No gain";
-    } else if(playType === "Pass") {
-        outcome = team.players[player].pass[roll] || "Incomplete";
-    }
-    return `${player} (${playType}) rolled ${roll}: ${outcome}`;
+function resolvePlay(team, playerName, playType){
+  const player = team.players[playerName];
+  if(!player){ return `${playerName} not found.`; }
+  const roll = roll2d6();
+  let table = playType==='Run' ? player.run : player.pass;
+  if(!table){ table = {}; }
+  const outcome = table[String(roll)] || (playType==='Run' ? 'No gain' : 'Incomplete');
+  return `${playerName} (${playType}) rolled ${roll}: ${outcome}`;
 }
