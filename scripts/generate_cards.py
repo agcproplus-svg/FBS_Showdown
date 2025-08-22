@@ -18,19 +18,33 @@ def fill_grid(weights):
     cells = []
     for k in labels: cells += [k]*counts[k]
     random.Random(42).shuffle(cells)
-    return [cells[i*6:(i+1)*6] for i in range(6)]
+    # Return as 2d6 map 2..12
+    # Convert 36 cells to 11 outcomes: we’ll just map by frequency across sums
+    # Probabilities of sums: 2:1,3:2,4:3,5:4,6:5,7:6,8:5,9:4,10:3,11:2,12:1
+    probs = {2:1,3:2,4:3,5:4,6:5,7:6,8:5,9:4,10:3,11:2,12:1}
+    res = {}
+    idx = 0
+    for ssum in range(2,13):
+        take = probs[ssum]
+        chunk = cells[idx:idx+take]; idx += take
+        # choose most common label in this chunk
+        if not chunk: res[str(ssum)] = "0"
+        else:
+            label = max(set(chunk), key=chunk.count)
+            res[str(ssum)] = label
+    return res
 
 def generate_rb_card(stats):
     ypc = clamp(stats.get("ypc", 4.2), 2.0, 7.0)
     fum = clamp(stats.get("fum_rate", 0.01), 0, 0.05)
     tdr = clamp(stats.get("td_rate", 0.02), 0, 0.12)
     posBias = (ypc - 3.5) / 3.5
-    big = clamp(4 + round(6*posBias), 1, 10)
-    plus5 = clamp(8 + round(8*posBias), 3, 14)
+    big = clamp(6 + round(6*posBias), 1, 10)
+    plus5 = clamp(10 + round(8*posBias), 3, 14)
     plus2 = clamp(10 + round(4*posBias), 6, 14)
-    zero = clamp(8 - round(3*posBias), 2, 12)
-    minus2 = clamp(4 - round(3*posBias), 0, 8)
-    minus5 = clamp(2 - round(2*posBias), 0, 6)
+    zero = clamp(6 - round(3*posBias), 2, 12)
+    minus2 = clamp(3 - round(3*posBias), 0, 8)
+    minus5 = clamp(1 - round(2*posBias), 0, 6)
     fSquares = clamp(round(36 * fum), 0, 3)
     tdSquares = clamp(round(36 * tdr), 0, 4)
     weights = {'BIG': big, '+5': plus5, '+2': plus2, '0': zero, '-2': minus2, '-5': minus5, 'FUM': fSquares, 'TD': tdSquares}
@@ -77,7 +91,7 @@ def derive_rates(stats):
     rush_yds = s.get("rushingYards") or s.get("rushYards") or 0
     rush_td = s.get("rushingTD") or s.get("rush_td") or 0
     rec = s.get("receptions") or s.get("rec") or 0
-    rec_tgt = s.get("targets") or s.get("tgt") or max(rec*1.4, 0)  # estimate targets if missing
+    rec_tgt = s.get("targets") or s.get("tgt") or max(rec*1.4, 0)  # estimate
     rec_yds = s.get("receivingYards") or s.get("recYards") or 0
     rec_td = s.get("receivingTD") or s.get("rec_td") or 0
     fumbles = s.get("fumbles") or 0
@@ -102,25 +116,36 @@ def card_for_player(p):
     stats = p.get("stats_api") or {}
     rates = derive_rates(stats)
     if "QB" in pos:
-        grid = generate_qb_card(rates)
+        return generate_qb_card(rates)
     elif pos in ("RB","HB","FB"):
-        grid = generate_rb_card(rates)
+        return generate_rb_card(rates)
     else:
-        grid = generate_receiver_card(rates)
-    return grid
+        return generate_receiver_card(rates)
+
+def synthetic_defense_card():
+    # Placeholder balanced defense tables; replace with real team-allowed stats in future.
+    # Run defense outcomes
+    run = {str(s): lab for s, lab in zip(range(2,13), [
+        "STUFF","TFL","TACKLE","TACKLE","TACKLE","TACKLE","TACKLE","TACKLE","TFL","TACKLE","STUFF"
+    ])}
+    # Pass defense outcomes
+    pdef = {str(s): lab for s, lab in zip(range(2,13), [
+        "PBU","SACK","PBU","PBU","PBU","PBU","PBU","INT","PBU","SACK","PBU"
+    ])}
+    return {"run": run, "pass": pdef}
 
 def main():
     src = json.load(open(IN,"r",encoding="utf-8"))
     out = {"season": src.get("season", 2024), "division":"D1-FBS", "teams":[]}
     for t in src.get("teams", []):
         team = {"id":t["id"],"name":t["name"],"conf":t.get("conf"),
-                "logo": f"img/logos/{t['id']}.png", "players":{}}
+                "logo": f"img/logos/{t['id']}.png", "players":{}, "defense": synthetic_defense_card()}
         for p in t.get("players", []):
             team["players"][p["name"]] = {
                 "position": p.get("position","UNK"),
-                "card": card_for_player(p),
-                "run": {str(i):"0 yards" for i in range(2,13)},  # optional overrides
-                "pass": {str(i):"Incomplete" for i in range(2,13)} # optional overrides
+                # For frontend: convert card grid to simple 2d6 map; here we already produce 2d6 maps
+                "run": card_for_player(p),  # Using same generator; could split by play type in future
+                "pass": card_for_player(p)
             }
         out["teams"].append(team)
     with open(OUT,"w",encoding="utf-8") as f:
