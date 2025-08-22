@@ -1,37 +1,7 @@
 {
   "teams": [
     {
-      "id": "ALA",
       "name": "Alabama Crimson Tide",
-      "logo": "img/logos/_placeholder.png",
-      "defense": {
-        "run": {
-          "2": "STUFF",
-          "3": "TFL",
-          "4": "TACKLE",
-          "5": "TACKLE",
-          "6": "TACKLE",
-          "7": "TACKLE",
-          "8": "TACKLE",
-          "9": "TACKLE",
-          "10": "TFL",
-          "11": "STUFF",
-          "12": "TACKLE"
-        },
-        "pass": {
-          "2": "PBU",
-          "3": "SACK",
-          "4": "PBU",
-          "5": "PBU",
-          "6": "PBU",
-          "7": "TACKLE",
-          "8": "PBU",
-          "9": "INT",
-          "10": "PBU",
-          "11": "SACK",
-          "12": "PBU"
-        }
-      },
       "players": {
         "RB John Doe": {
           "run": {
@@ -80,37 +50,7 @@
       }
     },
     {
-      "id": "UGA",
       "name": "Georgia Bulldogs",
-      "logo": "img/logos/_placeholder.png",
-      "defense": {
-        "run": {
-          "2": "TACKLE",
-          "3": "STUFF",
-          "4": "TACKLE",
-          "5": "TACKLE",
-          "6": "TFL",
-          "7": "TACKLE",
-          "8": "TACKLE",
-          "9": "TFL",
-          "10": "TACKLE",
-          "11": "TACKLE",
-          "12": "STUFF"
-        },
-        "pass": {
-          "2": "PBU",
-          "3": "PBU",
-          "4": "SACK",
-          "5": "PBU",
-          "6": "PBU",
-          "7": "PBU",
-          "8": "PBU",
-          "9": "INT",
-          "10": "PBU",
-          "11": "SACK",
-          "12": "PBU"
-        }
-      },
       "players": {
         "RB Mike Johnson": {
           "run": {

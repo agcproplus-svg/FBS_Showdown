@@ -2,85 +2,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>FBS Showdown — Defense & Situations</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/dice.js"></script>
-  <script src="js/engine.js"></script>
-  <script src="js/ui.js"></script>
+    <meta charset="utf-8">
+    <title>FBS Showdown Prototype</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dice.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/ui.js"></script>
 </head>
 <body>
-  <header>
-    <img class="logo" src="img/logos/_placeholder.png" alt="logo">
-    <h1>FBS Showdown</h1>
-  </header>
-  <main>
-    <section class="panel">
-      <h2>Teams</h2>
-      <div class="controls">
-        <input type="text" placeholder="Search teams..." oninput="onSearchInput(this)">
-      </div>
-      <div id="teamList" style="margin-top:10px;"></div>
-    </section>
-    <section class="panel">
-      <h2>Play</h2>
-      <div class="controls">
-        <div class="row">
-          <label>Offense Team</label>
-          <select id="teamSelect" onchange="selectTeam()"></select>
-        </div>
-        <div class="row">
-          <label>Defense Team</label>
-          <select id="defenseSelect" onchange="selectDefense()"></select>
-        </div>
-        <div class="row">
-          <label>Player (offense)</label>
-          <select id="playerSelect" onchange="selectPlayer()"></select>
-        </div>
-        <div class="row">
-          <label>Down</label>
-          <select onchange="setDown(this)">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-        </div>
-        <div class="row">
-          <label>Distance</label>
-          <select onchange="setDistance(this)">
-            <option value="short">short (&lt;=3)</option>
-            <option value="medium" selected>medium (4–6)</option>
-            <option value="long">long (7+)</option>
-          </select>
-        </div>
-        <div class="row">
-          <label>Field</label>
-          <select onchange="setField(this)">
-            <option value="own" selected>own</option>
-            <option value="mid">mid</option>
-            <option value="redzone">red zone</option>
-          </select>
-        </div>
-      </div>
+    <h1>FBS Showdown Prototype</h1>
 
-      <div class="actions" style="margin-top:12px;">
-        <span class="badge" id="situationBadge"></span>
-      </div>
+    <div class="header-banner">Select Team</div>
+    <select id="teamSelect" onchange="selectTeam()"></select>
 
-      <div class="actions" style="margin-top:12px;">
+    <div class="header-banner">Select Player</div>
+    <select id="playerSelect" onchange="selectPlayer()"></select>
+
+    <div>
         <button class="img-btn" onclick="runPlay('Run')">
-          <img src="img/run_button.png" alt="Run">
+            <img src="img/run_button.png" alt="Run Play">
         </button>
         <button class="img-btn" onclick="runPlay('Pass')">
-          <img src="img/pass_button.png" alt="Pass">
+            <img src="img/pass_button.png" alt="Pass Play">
         </button>
-      </div>
+    </div>
 
-      <div id="log" style="margin-top:12px;"></div>
-      <div class="small" style="margin-top:8px;">Defense & situation rules are applied after the offensive card result.</div>
-    </section>
-  </main>
-  <footer>© FBS Showdown</footer>
+    <div id="log"></div>
 </body>
 </html>
