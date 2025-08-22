@@ -1,1 +1,28 @@
-<!DOCTYPE html><html><head><meta charset='utf-8'><title>FBS Showdown</title><link rel='stylesheet' href='css/styles.css'></head><body><h1>FBS Showdown</h1><script src='js/engine.js'></script></body></html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>FBS Showdown Prototype</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dice.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/ui.js"></script>
+</head>
+<body>
+    <h1>FBS Showdown Prototype</h1>
+    <div>
+        <label>Team: </label>
+        <select id="teamSelect" onchange="selectTeam()"></select>
+    </div>
+    <div>
+        <label>Player: </label>
+        <select id="playerSelect" onchange="selectPlayer()"></select>
+    </div>
+    <div>
+        <button onclick="runPlay('Run')">Run Play</button>
+        <button onclick="runPlay('Pass')">Pass Play</button>
+    </div>
+    <div id="log"></div>
+</body>
+</html>

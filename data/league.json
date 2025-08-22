@@ -1,1 +1,102 @@
-{ "teams": [] }
+{
+  "teams": [
+    {
+      "name": "Alabama Crimson Tide",
+      "players": {
+        "RB John Doe": {
+          "run": {
+            "2": "2 yards",
+            "3": "3 yards",
+            "4": "4 yards",
+            "5": "5 yards",
+            "6": "6 yards",
+            "7": "7 yards",
+            "8": "8 yards",
+            "9": "9 yards",
+            "10": "10 yards",
+            "11": "11 yards",
+            "12": "12 yards"
+          },
+          "pass": {}
+        },
+        "QB James Smith": {
+          "run": {
+            "2": "0 yards scramble",
+            "3": "1 yards scramble",
+            "4": "2 yards scramble",
+            "5": "3 yards scramble",
+            "6": "4 yards scramble",
+            "7": "5 yards scramble",
+            "8": "6 yards scramble",
+            "9": "7 yards scramble",
+            "10": "8 yards scramble",
+            "11": "9 yards scramble",
+            "12": "10 yards scramble"
+          },
+          "pass": {
+            "2": "Incomplete",
+            "3": "Incomplete",
+            "4": "Incomplete",
+            "5": "Incomplete",
+            "6": "Incomplete",
+            "7": "Complete 10 yards",
+            "8": "Complete 10 yards",
+            "9": "Complete 10 yards",
+            "10": "Complete 10 yards",
+            "11": "Complete 10 yards",
+            "12": "Complete 10 yards"
+          }
+        }
+      }
+    },
+    {
+      "name": "Georgia Bulldogs",
+      "players": {
+        "RB Mike Johnson": {
+          "run": {
+            "2": "3 yards",
+            "3": "4 yards",
+            "4": "5 yards",
+            "5": "6 yards",
+            "6": "7 yards",
+            "7": "8 yards",
+            "8": "9 yards",
+            "9": "10 yards",
+            "10": "11 yards",
+            "11": "12 yards",
+            "12": "13 yards"
+          },
+          "pass": {}
+        },
+        "QB David Lee": {
+          "run": {
+            "2": "-1 yards scramble",
+            "3": "0 yards scramble",
+            "4": "1 yards scramble",
+            "5": "2 yards scramble",
+            "6": "3 yards scramble",
+            "7": "4 yards scramble",
+            "8": "5 yards scramble",
+            "9": "6 yards scramble",
+            "10": "7 yards scramble",
+            "11": "8 yards scramble",
+            "12": "9 yards scramble"
+          },
+          "pass": {
+            "2": "Incomplete",
+            "3": "Incomplete",
+            "4": "Incomplete",
+            "5": "Incomplete",
+            "6": "Incomplete",
+            "7": "Incomplete",
+            "8": "Complete 12 yards",
+            "9": "Complete 12 yards",
+            "10": "Complete 12 yards",
+            "11": "Complete 12 yards",
+            "12": "Complete 12 yards"
+          }
+        }
+      }
+    }
+  ]
+}
